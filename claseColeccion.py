@@ -42,8 +42,8 @@ class Coleccion:
         else:
             band = True
         if band:
-            nodo = Nodo(elemento)                               #Coleccion vacía
-            if self.__comienzo == None:
+            nodo = Nodo(elemento)
+            if self.__comienzo == None:    #Coleccion vacía
                 self.__comienzo = nodo
                 self.__actual = nodo
                 self.__tope += 1
@@ -52,6 +52,7 @@ class Coleccion:
                     if pos == 0:                                #Posicion positivo
                         nodo.setSiguiente(self.__comienzo)
                         self.__comienzo = nodo
+                        self.__actual = nodo
                         self.__tope += 1
                     else:
                         ant = self.__comienzo
@@ -68,6 +69,7 @@ class Coleccion:
                     if pos == -self.__tope:
                         nodo.setSiguiente(self.__comienzo)
                         self.__comienzo = nodo
+                        self.__actual = nodo
                         self.__tope += 1
                     else:
                         ant = self.__comienzo

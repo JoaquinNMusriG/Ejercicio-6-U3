@@ -14,7 +14,7 @@ class ManejaColeccion:
     def crearVehiculo (self):
         tipo = input('Ingrese la opcion de tipo de vehiculo(1 = Nuevo ; 2 = Usado): ')
         unVehiculo = None
-        if tipo == '1':
+        if (tipo == '1') or (tipo == '2'):
             modelo = input('Ingrese el modelo del auto: ')
             cantP = input('Ingrese la cantidad de puertas del vehiculo: ')
             if cantP.isdigit():
@@ -24,38 +24,26 @@ class ManejaColeccion:
                     precioB = input('Ingrese el precio base del vehiculo: ')
                     try:
                         precioB = float(precioB)
-                        version = input('Ingrese la version del vehiculo (base o full): ')
-                        if (version.lower() == 'base') or (version.lower() == 'full'):
-                            unVehiculo = Nuevo(modelo,cantP,color,precioB,version)
-                    except ValueError:
-                        print('Precio inválido.')
-                else:
-                    print('Color inválido.')
-            else:
-                print('Cantidad de puertas inválida.')
-        elif tipo == '2':
-            modelo = input('Ingrese el modelo del auto: ')
-            cantP = input('Ingrese la cantidad de puertas del vehiculo: ')
-            if cantP.isdigit():
-                cantP = int(cantP)
-                color = input('Ingrese el color del vehiculo: ')
-                if color.isalpha():
-                    precioB = input('Ingrese el precio base del vehiculo: ')
-                    try:
-                        precioB = float(precioB)
-                        marca = input('Ingrese la marca del vehiculo: ')
-                        patente = input('Ingrese la patente del vehiculo: ')
-                        anio = input('Ingrese el año del vehiculo: ')
-                        if anio.isdigit():
-                            anio = int(anio)
-                            kilometraje = input('Ingrese el kilometraje del vehiculo: ')
-                            try:
-                                kilometraje = float(kilometraje)
-                                unVehiculo = Usado(modelo,cantP,color,precioB,marca,patente,anio,kilometraje)
-                            except ValueError:
-                                print('Kilometraje inválido.')
+                        if tipo == '1':
+                            version = input('Ingrese la version del vehiculo (base o full): ')
+                            if (version.lower() == 'base') or (version.lower() == 'full'):
+                                unVehiculo = Nuevo(modelo,cantP,color,precioB,version)
+                            else:
+                                print('Version inválida.')
                         else:
-                            print('Año inválido.')
+                            marca = input('Ingrese la marca del vehiculo: ')
+                            patente = input('Ingrese la patente del vehiculo: ')
+                            anio = input('Ingrese el año del vehiculo: ')
+                            if anio.isdigit():
+                                anio = int(anio)
+                                kilometraje = input('Ingrese el kilometraje del vehiculo: ')
+                                try:
+                                    kilometraje = float(kilometraje)
+                                    unVehiculo = Usado(modelo,cantP,color,precioB,marca,patente,anio,kilometraje)
+                                except ValueError:
+                                    print('Kilometraje inválido.')
+                            else:
+                                print('Año inválido.')
                     except ValueError:
                         print('Precio inválido.')
                 else:
@@ -139,6 +127,7 @@ class ManejaColeccion:
     def toJSON(self):
         d = dict(
             __class__ = self.__class__.__name__,
+            __Marca__ = Nuevo.getMarca(),
             vehiculos = [vehiculo.toJSON() for vehiculo in self.__vehiculos]
             )
         return d

@@ -7,7 +7,6 @@ from claseUsado import Usado
 class ObjectEncoder():
 
     def decodificarDiccionario(self, d):
-        band = False
         if '__class__' not in d:
             return d
         else:
@@ -15,6 +14,7 @@ class ObjectEncoder():
             class_ = eval(class_name)
             if class_name == 'ManejaColeccion':
                 vehiculos = d['vehiculos']
+                Nuevo.setMarca(d['__Marca__'])
                 manejador = class_()
                 for i in range(len(vehiculos)):
                     dVehiculo = vehiculos[i]
@@ -22,9 +22,6 @@ class ObjectEncoder():
                     class_ = eval(class_name)
                     atributos = dVehiculo['__atributos__']
                     unVehiculo = class_(**atributos)
-                    if isinstance(unVehiculo, Nuevo) & (not band):
-                        Nuevo.setMarca(dVehiculo['__Marca__'])
-                        band = True
                     manejador.agregarVehiculoDesdeArch(unVehiculo)
             return manejador
 

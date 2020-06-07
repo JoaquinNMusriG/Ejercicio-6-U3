@@ -20,9 +20,10 @@ class Menu:
 
     def insertarVehiculoPos(self, jsonF, vehiculos):
         pos = input('Ingrese la posicion en la que quiere insertar el vehiculo: ')
-        if pos.isdigit():
-            vehiculos.insertarVehi(int(pos))
-        else:
+        try:
+            pos = int(pos)
+            vehiculos.insertarVehi(pos)
+        except ValueError:
             print('Posicion inválida.')
 
     def agregarVehiculo(self, jsonF, vehiculos):

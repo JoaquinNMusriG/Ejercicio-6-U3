@@ -1,14 +1,14 @@
 {
     "__class__": "ManejaColeccion",
+    "__Marca__": "Mercedes-Benz",
     "vehiculos": [
         {
             "__class__": "Nuevo",
-            "__Marca__": "Mercedes-Benz",
             "__atributos__": {
                 "modelo": "Mercedes-Benz Clase A",
                 "cantP": 5,
                 "color": "negro",
-                "precioB": 200000,
+                "precioB": 200000.0,
                 "version": "full"
             }
         },
@@ -18,7 +18,7 @@
                 "modelo": "Chevrolet Spark",
                 "cantP": 4,
                 "color": "verde",
-                "precioB": 150000,
+                "precioB": 150000.0,
                 "marca": "Chevrolet",
                 "patente": "02-ABC-03",
                 "anio": 2013,

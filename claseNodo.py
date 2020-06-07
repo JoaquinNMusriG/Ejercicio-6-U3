@@ -7,7 +7,10 @@ class Nodo:
         self.__siguiente = None
 
     def setSiguiente(self, siguiente):
-        self.__siguiente = siguiente    
+        self.__siguiente = siguiente
+
+    def setVehiculo(self, vehiculo):
+        self.__vehiculo = vehiculo       
 
     def getSiguiente(self):
         return self.__siguiente

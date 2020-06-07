@@ -32,7 +32,6 @@ class Nuevo(Vehiculo):
     def toJSON(self):
         d = dict(
             __class__ = self.__class__.__name__,
-            __Marca__ = self.Marca,
             __atributos__ = dict(
                 modelo = self.getModelo(),
                 cantP = self.getCantPuertas(),
